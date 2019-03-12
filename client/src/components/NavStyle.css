@@ -1,0 +1,9 @@
+.menu{
+  padding: 1px 0 0 3px;
+}
+
+.item a.active{
+  background: #29abe2;
+  color: #fff;
+  border-radius: 5px;
+}
