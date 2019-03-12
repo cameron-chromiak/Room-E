@@ -12,26 +12,16 @@ import './NavStyle.css'
 class Nav extends React.Component{
 
 
-  state={
-    isLoggedIn: false
-  }
 
-  isUserLoggedIn = (user)=>{
-
-    }
 
   handleLogoutClick(e) {
     api.logout()
-  }
-
-  onLogin = (user)=>{
-    if(user){
-      console.log('true');
-    }
-
+    this.props.stuff.toggleLogIn()
   }
 
 render(){
+  console.log(this)
+  const props = this.props
   return(
     <div>
     <div className='ui secondary menu'>
@@ -44,14 +34,17 @@ render(){
       {api.isLoggedIn() && <Link className='item' to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
       </div>
     </div>
-    <Switch>
+    <Switch >
       <Route path="/" exact component={Home} />
         <Route
+          {...this.props}
           path='/dashboard'
-          render={(props) => <Dashboard {...props}isLoggedIn={this.state.isLoggedIn} />}
+          render={(props, hi) =>  <Dashboard {...props} stuff={this.props}/>}/>
+        <Route
+          path='/login'
+          render={(props) => <Login {...props}  stuff={this.props}/>}
         />
       <Route path="/signup" component={Signup} />
-      <Route path="/login" onLogin={'x'} component={Login} />
       <Route path="/secret" component={Secret} />
       <Route render={() => <h2>404</h2>} />
     </Switch>
@@ -67,7 +60,8 @@ render(){
 // <Route
 //   path='/dashboard'
 //   render={(props) => <Dashboard {...props} isAuthed={true} />}
-// />
+// />      <Route path="/login" onLogin={this.onLogin} component={Login} />
+
 
 
 export default Nav

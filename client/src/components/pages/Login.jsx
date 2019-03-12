@@ -28,6 +28,7 @@ export default class Login extends Component {
       .then(result => {
         console.log('SUCCESS!')
         console.log('xxx',this.props);
+        this.props.stuff.toggleLogIn()
         this.props.history.push("/") // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }))
@@ -39,6 +40,7 @@ export default class Login extends Component {
 
 
   render() {
+    console.log(this)
     return (
     <div className="ui card form">
     <div className="content">

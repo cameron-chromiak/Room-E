@@ -8,6 +8,7 @@ import { Route, Redirect } from 'react-router'
 export default class Dashoard extends Component {
 
   componentDidMount(){
+    console.log(this)
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
         console.log(res)
@@ -15,7 +16,7 @@ export default class Dashoard extends Component {
   }
 
   showDashboard = () => {
-    if(this.props.isLoggedIn){
+    if(this.props.stuff.isLoggedIn){
       return (
         <div>
           <h2>Dashoard</h2>
