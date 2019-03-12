@@ -11,6 +11,12 @@ import './NavStyle.css'
 
 class Nav extends React.Component{
 
+
+  state={
+    isLoggedIn: true
+  }
+
+
   handleLogoutClick(e) {
     api.logout()
   }
@@ -20,7 +26,7 @@ render(){
     <div>
     <div className='ui secondary menu'>
       <NavLink to="/" className='item' exact>Home</NavLink>
-      {api.isLoggedIn() &&<NavLink className='item' to="/Dashboard">Dashboard</NavLink>}
+      {api.isLoggedIn() &&<NavLink className='item' to="/dashboard">Dashboard</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item' to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item' to="/login">Login</NavLink>}
       <NavLink className='item' to="/secret">Secret</NavLink>
@@ -30,7 +36,10 @@ render(){
     </div>
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/Dashboard" component={Dashboard} />
+        <Route
+          path='/dashboard'
+          render={(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn} />}
+        />
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/secret" component={Secret} />
@@ -43,6 +52,13 @@ render(){
 
 }
 
+
+
+// <Route path="/dashboard" component={Dashboard} />
+// <Route
+//   path='/dashboard'
+//   render={(props) => <Dashboard {...props} isAuthed={true} />}
+// />
 
 
 export default Nav

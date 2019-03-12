@@ -16,6 +16,9 @@ router.delete('/random/:deleteId', (req, res, next)=>{
 
 router.get('/dashboard', isLoggedIn, (req, res, next) =>{
   console.log('INDEX');
+  res.json({
+    yoyoyoy:'ddd'
+  })
 })
 
 
