@@ -30,7 +30,7 @@ render(){
     </div>
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="house/Dashboard" component={Dashboard} />
+      <Route path="/Dashboard" component={Dashboard} />
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/secret" component={Secret} />

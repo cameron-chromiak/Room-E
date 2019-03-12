@@ -14,18 +14,8 @@ router.delete('/random/:deleteId', (req, res, next)=>{
   })
 })
 
-
-router.get('/random', (req, res, next) => {
-  Country.find().then(allCountries => {
-    let countriesFromDb = allCountries[Math.floor(Math.random()*allCountries.length)]
-    console.log(3214567, countriesFromDb)
-    // res.render("random.hbs", { data: data})
-    res.json({
-      countriesFromDb
-    })
-  })
-
-
+router.get('/dashboard', isLoggedIn, (req, res, next) =>{
+  console.log('INDEX');
 })
 
 
