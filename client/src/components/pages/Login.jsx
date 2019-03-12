@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import api from '../../api';
 import './styles/LoginStyle.css'
+
+
 export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: "cam",
       password: "123",
-      message: null
+      message: null,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -18,15 +20,23 @@ export default class Login extends Component {
     })
   }
 
+
+
   handleClick(e) {
     e.preventDefault()
     api.login(this.state.username, this.state.password)
       .then(result => {
-        console.log('SUCCESS!',result)
+        console.log('SUCCESS!')
+        console.log('xxx',this.props);
         this.props.history.push("/") // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
+  setLogin(){
+    this.props.onLogin(true)
+  }
+
+
 
   render() {
     return (

@@ -13,12 +13,22 @@ class Nav extends React.Component{
 
 
   state={
-    isLoggedIn: true
+    isLoggedIn: false
   }
 
+  isUserLoggedIn = (user)=>{
+
+    }
 
   handleLogoutClick(e) {
     api.logout()
+  }
+
+  onLogin = (user)=>{
+    if(user){
+      console.log('true');
+    }
+
   }
 
 render(){
@@ -28,7 +38,7 @@ render(){
       <NavLink to="/" className='item' exact>Home</NavLink>
       {api.isLoggedIn() &&<NavLink className='item' to="/dashboard">Dashboard</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item' to="/signup">Signup</NavLink>}
-      {!api.isLoggedIn() && <NavLink className='item' to="/login">Login</NavLink>}
+      {!api.isLoggedIn() && <NavLink className='item'to="/login">Login</NavLink>}
       <NavLink className='item' to="/secret">Secret</NavLink>
       <div className='right menu'>
       {api.isLoggedIn() && <Link className='item' to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
@@ -38,12 +48,11 @@ render(){
       <Route path="/" exact component={Home} />
         <Route
           path='/dashboard'
-          render={(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn} />}
+          render={(props) => <Dashboard {...props}isLoggedIn={this.state.isLoggedIn} />}
         />
       <Route path="/signup" component={Signup} />
-      <Route path="/login" component={Login} />
+      <Route path="/login" onLogin={'x'} component={Login} />
       <Route path="/secret" component={Secret} />
-      <Route path="/random-country" component={randomCountry} />
       <Route render={() => <h2>404</h2>} />
     </Switch>
     </div>

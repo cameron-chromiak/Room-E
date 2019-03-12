@@ -5,13 +5,12 @@ import { Route, Redirect } from 'react-router'
 
 
 
-export default class Countries extends Component {
+export default class Dashoard extends Component {
 
   componentDidMount(){
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
         console.log(res)
-        //this.setState({country:res.data.countriesFromDb})
       })
   }
 
@@ -27,8 +26,8 @@ export default class Countries extends Component {
     else {
       return (
         <div>
-          <Redirect to="/"/>
-
+          login
+          {/*<Redirect to="/"/>*/}
         </div>
       )
     }
