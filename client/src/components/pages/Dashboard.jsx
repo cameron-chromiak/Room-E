@@ -28,8 +28,16 @@ export default class Dashoard extends Component {
       let data = {
         HouseName: this.state.HouseName
       }
-    }
+      // TODO: SEND THIS TO DB W/ USER ID
+    //   api.createHouse(data)
+    //     .then(result => {
+    //       console.log('House Created!!',result)
+    //       this.props.history.push("/dashboard") // Redirect to the home page
+    //     })
+    //     .catch(err => this.setState({ message: err.toString() }))
+    // }
   }
+}
 
   handleInputChange = (e) =>{
     this.setState({HouseName: e.target.value})
@@ -70,8 +78,6 @@ export default class Dashoard extends Component {
   }
 
   render() {
-
-
     return (
       <div>
           {this.showDashboard()}

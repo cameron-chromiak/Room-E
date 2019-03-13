@@ -29,6 +29,12 @@ export default {
     return JSON.parse(localStorage.getItem('user'))
   },
 
+// TODO: CREATE HOUSE SCHEMA THIS IS CALLED FROM DASHBOARD
+  // createHouse(houseName){
+  //   return service
+  //   console.log('x');
+  // },
+
   // This method signs up and logs in the user
   signup(userInfo) {
     return service

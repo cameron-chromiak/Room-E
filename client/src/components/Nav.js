@@ -4,7 +4,6 @@ import Dashboard from './pages/Dashboard';
 import Secret from './pages/Secret';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import randomCountry from './pages/randomCountry';
 import api from '../api';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import './NavStyle.css'
