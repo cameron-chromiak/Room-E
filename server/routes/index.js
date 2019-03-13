@@ -1,9 +1,6 @@
 const express = require('express');
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
-const Country = require('../models/Country')
-
-
 
 
 router.delete('/random/:deleteId', (req, res, next)=>{

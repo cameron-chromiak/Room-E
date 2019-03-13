@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 
-
+import api from '../api';
 import Nav from './Nav.js'
 
 export default class App extends Component {
 
   state={
-    isLoggedIn:null
+    isLoggedIn:null,
+    user: {},
   }
+
+  setUser = () => {
+  if (api.isLoggedIn()) {
+    this.setState({ user: api.getLocalStorageUser() })
+  } else {
+    this.setState({ user: {} })
+
+  }
+}
 
   toggleLogIn = () => {
     this.setState({
