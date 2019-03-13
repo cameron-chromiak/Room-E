@@ -7,6 +7,10 @@ import { Route, Redirect } from 'react-router'
 
 export default class Dashoard extends Component {
 
+  state={
+    HouseName: ''
+  }
+
   componentDidMount(){
     console.log(api.isLoggedIn())
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
@@ -15,7 +19,21 @@ export default class Dashoard extends Component {
       })
   }
 
+  handleSubmit = (e) =>{
+    e.preventDefault()
+    if(!this.state.HouseName){
+      console.log('You need a house name');
+    }else{
+      {/*console.log(this.state.HouseName);*/}
+      let data = {
+        HouseName: this.state.HouseName
+      }
+    }
+  }
 
+  handleInputChange = (e) =>{
+    this.setState({HouseName: e.target.value})
+  }
 
 
   showDashboard = () => {
@@ -33,8 +51,9 @@ export default class Dashoard extends Component {
           <form className="ui form">
             <div className="field">
               <label>First Name</label>
-              <input type="text" name="first-name" placeholder="First Name"/>
+              <input type="text"value={this.state.HouseName} onChange={this.handleInputChange}/>
             </div>
+              <button className='ui button btn' onClick={(e) => this.handleSubmit(e)}>Create</button>
           </form>
         </div>
         </div>
@@ -54,7 +73,7 @@ export default class Dashoard extends Component {
 
 
     return (
-      <div className="Countries">
+      <div>
           {this.showDashboard()}
       </div>
     );
