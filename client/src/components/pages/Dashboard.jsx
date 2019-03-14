@@ -8,14 +8,15 @@ import { Route, Redirect } from 'react-router'
 export default class Dashoard extends Component {
 
   state={
-    HouseName: ''
+    HouseName: '',
+    fireRedirect: false
   }
 
   componentDidMount(){
     console.log(api.isLoggedIn())
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
-        console.log(res)
+
       })
   }
 
@@ -28,16 +29,14 @@ export default class Dashoard extends Component {
       let data = {
         HouseName: this.state.HouseName
       }
-      // TODO: SEND THIS TO DB W/ USER ID
-    //   api.createHouse(data)
-    //     .then(result => {
-    //       console.log('House Created!!',result)
-    //       this.props.history.push("/dashboard") // Redirect to the home page
-    //     })
-    //     .catch(err => this.setState({ message: err.toString() }))
-    // }
+      Axios.post('http://localhost:5000/api/house', data)
+        .then(res =>{
+          console.log(res)
+          this.setState({ fireRedirect: true })
+        })
+    }
   }
-}
+
 
   handleInputChange = (e) =>{
     this.setState({HouseName: e.target.value})
@@ -78,10 +77,20 @@ export default class Dashoard extends Component {
   }
 
   render() {
+    const { fireRedirect } = this.state
+
     return (
       <div>
           {this.showDashboard()}
+          {fireRedirect && (
+          <Redirect to={'/house/build'}/>
+        )}
       </div>
     );
   }
 }
+
+
+
+//Sources
+// https://gist.github.com/verticalgrain/195468e69f2ac88f3d9573d285b09764

@@ -1,4 +1,6 @@
 import axios from 'axios'
+axios.defaults.withCredentials = true
+
 
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
@@ -29,7 +31,7 @@ export default {
     return JSON.parse(localStorage.getItem('user'))
   },
 
-// TODO: CREATE HOUSE SCHEMA THIS IS CALLED FROM DASHBOARD
+// TODO: Make this go to db
   // createHouse(houseName){
   //   return service
   //   console.log('x');
