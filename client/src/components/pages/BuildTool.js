@@ -11,7 +11,7 @@ class BuildTool extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
     Axios.get(`http//localhost:5000/api/house/details/${this.props.match.params.id}`).then(
       res =>{
         console.log(res);

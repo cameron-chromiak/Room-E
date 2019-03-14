@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import api from '../../api';
 import Axios from 'axios'
-import { Route, Redirect } from 'react-router'
+import {Redirect } from 'react-router'
 
 
 
 export default class Dashoard extends Component {
 
   state={
-    HouseName: '',
+    ExistingHouses: [],
     fireRedirect: false
   }
 
   componentDidMount(){
-    console.log(api.isLoggedIn())
+    // console.log(api.isLoggedIn())
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
+        this.setState({ExistingHouses:res.data.houses})
+          console.log('Dashoard State',this.state.ExistingHouses)
       })
   }
 
@@ -30,7 +32,7 @@ export default class Dashoard extends Component {
       }
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
-          console.log(res)
+          console.log('RES', res)
           this.props.history.push(`house/build/${res.data.house._id}`)
           //this.setState({ fireRedirect: true })
         })
@@ -43,26 +45,52 @@ export default class Dashoard extends Component {
   }
 
 
+  fillCards = () =>{
+    let houses = [...this.state.ExistingHouses]
+    houses.map(house =>{
+      console.log('xxxx');
+      return(
+        <div className="ui cards">
+          <div className="card">
+            <div className="content">
+              <div className="header">
+                {this.state.ExistingHouses}
+              </div>
+              <div className="meta">
+                *created*
+              </div>
+              <div className="description">
+                *Names of people in house*
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    })
+
+  }
+
+
   showDashboard = () => {
     if(api.isLoggedIn()){
       return (
         <div>
-        <h2>Dashoard</h2>
-        <div className="ui four column doubling stackable grid container">
-          <div className="column">
-              {/*{this.renderHomes}*/}
-          </div>
-        </div>
-        <div className="ui raised very padded text container segment">
-        <h3>Create a new Home</h3>
-          <form className="ui form">
-            <div className="field">
-              <label>First Name</label>
-              <input type="text"value={this.state.HouseName} onChange={this.handleInputChange}/>
+          <h2>Dashoard</h2>
+          <div className="ui four column doubling stackable grid container">
+            <div className="column">
+                {/*{this.renderHomes}*/}
             </div>
-              <button className='ui button btn' onClick={(e) => this.handleSubmit(e)}>Create</button>
-          </form>
-        </div>
+          </div>
+          <div className="ui raised very padded text container segment">
+            <h3>Create a new Home</h3>
+            <form className="ui form">
+              <div className="field">
+                <label>House Name</label>
+                <input type="text"value={this.state.HouseName} onChange={this.handleInputChange}/>
+              </div>
+                <button className='ui button btn' onClick={(e) => this.handleSubmit(e)}>Create</button>
+            </form>
+          </div>
         </div>
       )
     }
@@ -81,10 +109,15 @@ export default class Dashoard extends Component {
 
     return (
       <div>
-          {this.showDashboard()}
-          {fireRedirect && (
-          <Redirect to={'/house/build'}/>
-        )}
+        <div>
+        {this.showDashboard()}
+        {fireRedirect && (
+        <Redirect to={'/house/build'}/>
+      )}
+        </div>
+        <div className="card-container">
+          {this.fillCards()}
+        </div>
       </div>
     );
   }

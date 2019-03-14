@@ -1,7 +1,7 @@
 const express = require('express');
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
-
+const House = require('../models/House')
 
 // router.delete('/random/:deleteId', (req, res, next)=>{
 //   console.log('DELETE RANDOM', req.params)
@@ -12,9 +12,11 @@ const router = express.Router();
 // })
 
 router.get('/dashboard', isLoggedIn, (req, res, next) =>{
-  console.log('INDEX');
-  res.json({
-    yoyoyoy:'ddd'
+  console.log('INDEX')
+  let houses = House.find().then(house =>{
+    res.json({
+      houses:house
+    })
   })
 })
 
