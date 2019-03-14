@@ -5,6 +5,7 @@ import Secret from './pages/Secret';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
+import BuildTool from './pages/BuildTool'
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import './NavStyle.css'
 
@@ -45,6 +46,7 @@ render(){
         />
       <Route path="/signup" component={Signup} />
       <Route path="/secret" component={Secret} />
+      <Route path="/house/build/:id" component={BuildTool} />
       <Route render={() => <h2>404</h2>} />
     </Switch>
     </div>

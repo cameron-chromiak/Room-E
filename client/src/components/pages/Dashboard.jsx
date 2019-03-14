@@ -16,7 +16,6 @@ export default class Dashoard extends Component {
     console.log(api.isLoggedIn())
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
-
       })
   }
 
@@ -32,7 +31,8 @@ export default class Dashoard extends Component {
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
           console.log(res)
-          this.setState({ fireRedirect: true })
+          this.props.history.push(`house/build/${res.data.house._id}`)
+          //this.setState({ fireRedirect: true })
         })
     }
   }
