@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 // import API_BASE_URL from '../configs'
+import './styles/BuildCss.css'
 
 
 class BuildTool extends Component{
@@ -18,10 +19,27 @@ class BuildTool extends Component{
       }
     )
   }
+  buildTaskCard = ()=>{
+    return(
+      <div class="ui card center-text">
+  <div class="content">
+    <div class="header">Members</div>
+    <div class="description">
+      <p></p>
+    </div>
+  </div>
+  <div class="extra content">
+      
+  </div>
+</div>
+    )
+  }
 
   render(){
     return(
-      <div>Build</div>
+      <div>
+          {this.buildTaskCard()}
+      </div>
     )
   }
 }

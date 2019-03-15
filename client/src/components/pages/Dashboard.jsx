@@ -99,7 +99,7 @@ export default class Dashoard extends Component {
               <div className='card'>
                   <div className="content">
                   <div className="header">
-                    <Link to={`build/${house._id}`}>{house.HouseName}</Link>
+                    <Link to={`/house/build/${house._id}`}>{house.HouseName}</Link>
                   </div>
                   {/*<div class="meta">
                     {if (house.people){
