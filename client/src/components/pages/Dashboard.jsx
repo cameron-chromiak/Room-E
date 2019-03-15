@@ -3,7 +3,7 @@ import api from '../../api';
 import Axios from 'axios'
 import {Redirect } from 'react-router'
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
-
+import './styles/DashboardStyle.css'
 
 
 export default class Dashoard extends Component {
@@ -34,7 +34,7 @@ export default class Dashoard extends Component {
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
           console.log('RES', res)
-          this.props.history.push(`house/build/${res.data.house._id}`)
+          this.props.history.push(`house/details/${res.data.house._id}`)
           //this.setState({ fireRedirect: true })
         })
     }
@@ -95,21 +95,23 @@ export default class Dashoard extends Component {
         {this.state.ExistingHouses.map(house =>{
           console.log('fdsgavd',house);
           return (
-            <div className='card'>
-                <div class="content">
-                <div class="header">
-                  <Link to={`build/${house._id}`}>{house.HouseName}</Link>
+            <div className='ui cards'>
+              <div className='card'>
+                  <div className="content">
+                  <div className="header">
+                    <Link to={`build/${house._id}`}>{house.HouseName}</Link>
+                  </div>
+                  {/*<div class="meta">
+                    {if (house.people){
+                      return('People')
+                    }else{
+                      return('No one')
+                    }}
+                  </div>
+                  <div class="description">
+                    Elliot requested permission to view your contact details
+                  </div>*/}
                 </div>
-                {/*<div class="meta">
-                  {if (house.people){
-                    return('People')
-                  }else{
-                    return('No one')
-                  }}
-                </div>
-                <div class="description">
-                  Elliot requested permission to view your contact details
-                </div>*/}
               </div>
             </div>
           )
