@@ -29,16 +29,41 @@ class BuildTool extends Component{
     </div>
   </div>
   <div class="extra content">
-      
   </div>
 </div>
     )
   }
 
+
+// TODO: Push to House collection
+addTaskUi = () =>{
+  return(
+    <div>
+      <h2>Dashoard</h2>
+      <div className="ui four column doubling stackable grid container">
+        <div className="column">
+            {/*{this.renderHomes}*/}
+        </div>
+      </div>
+      <div className="ui raised very padded text container segment">
+        <h3>Create a new Home</h3>
+        <form className="ui form">
+          <div className="field">
+            <label>House Name</label>
+            <input type="text"value={this.state.HouseName} onChange={this.handleInputChange}/>
+          </div>
+            <button className='ui button btn' onClick={(e) => this.handleSubmit(e)}>Create</button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
   render(){
     return(
       <div>
           {this.buildTaskCard()}
+          {this.addTaskUi()}
       </div>
     )
   }
