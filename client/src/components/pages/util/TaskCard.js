@@ -12,12 +12,17 @@ import '../styles/CardsStyle.css'
       e.preventDefault()
       let newTask = this.state.inputText
       this.setState(prevState => ({
-        task: [...prevState.task, newTask]
-      }))
-      console.log(this.state.task);
+        task: [...prevState.task, newTask],
+        inputText: ''
+      })
+    )
+    this.getTask()
+  }
+
+    getTask = () =>{
+      console.log('Task',this.state.task);
+      this.props.getTask(this.state.task)
     }
-
-
 
     onInputChange = (e) =>{
       this.setState({inputText: e.target.value})
@@ -29,7 +34,7 @@ import '../styles/CardsStyle.css'
         <div className="content">
           <div className="header">Task</div>
         <div className="description">
-          <p>{this.state.task.map((task, i) => <li id={i}>{task}</li>)}</p>
+          <p>{this.state.task.map((task, i) => <li key={i}>{task}</li>)}</p>
         </div>
         </div>
         <form className='ui form' onSubmit={this.addSubmit}>

@@ -29,7 +29,7 @@ import '../styles/CardsStyle.css'
         <div className="content">
           <div className="header">Members</div>
         <div className="description">
-          <p>{this.state.members.map((member, i) => <li id={i}>{member}</li>)}</p>
+          <p>{this.state.members.map((member, i) => <li key={i}>{member}</li>)}</p>
         </div>
         </div>
         <form className='ui form' onSubmit={this.addSubmit}>

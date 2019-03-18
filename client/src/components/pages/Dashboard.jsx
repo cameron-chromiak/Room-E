@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import api from '../../api';
 import Axios from 'axios'
 import {Redirect } from 'react-router'
-import { Route, Link, NavLink, Switch } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './styles/DashboardStyle.css'
 
 
@@ -27,7 +27,6 @@ export default class Dashoard extends Component {
     if(!this.state.HouseName){
       console.log('You need a house name');
     }else{
-      {/*console.log(this.state.HouseName);*/}
       let data = {
         HouseName: this.state.HouseName
       }

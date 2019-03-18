@@ -8,7 +8,14 @@ import ControlMenu from './util/ControlMenu'
 
 class BuildTool extends Component{
 
+  state={
+    members: [],
+    task: []
+  }
 
+  getTask = (newTask) =>{
+        // console.log('build',newTask);
+  }
 
   componentDidMount(){
     // console.log(this.props.match.params.id);
@@ -27,7 +34,7 @@ class BuildTool extends Component{
             <MembersCard/>
           </div>
           <div className='column'>
-            <TaskCard/>
+            <TaskCard getTask={this.getTask}/>
           </div>
         </div>
       </div>
