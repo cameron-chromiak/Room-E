@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 // import API_BASE_URL from '../configs'
+import MembersCard from './util/MembersCard'
 import TaskCard from './util/TaskCard'
 import './styles/BuildCss.css'
 
@@ -21,21 +22,25 @@ class BuildTool extends Component{
     )
   }
 
-
-// TODO: Push to House collection
-addTaskUi = () =>{
-  return(
-    <div>
-
-    </div>
-  )
-}
+  renderCards = () =>{
+    return(
+      <div className='ui four column centered grid'>
+        <div className='row'>
+          <div className='column'>
+            <MembersCard/>
+          </div>
+          <div className='column'>
+            <TaskCard/>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   render(){
     return(
       <div>
-          <TaskCard/>
-          {this.addTaskUi()}
+        {this.renderCards()}
       </div>
     )
   }
