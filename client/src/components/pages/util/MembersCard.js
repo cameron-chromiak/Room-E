@@ -4,19 +4,24 @@ import '../styles/CardsStyle.css'
   class MembersCard extends Component{
 
     state = {
-      members: [], //from db
+      members: [],
       inputText: ''
     }
 
     addSubmit = (e) =>{
       e.preventDefault()
-      let newName = this.state.inputText
-      this.setState(prevState => ({
-        members: [...prevState.members, newName]
-      }))
-      console.log(this.state.members);
-    }
+      let newMember = this.state.inputText
+      this.setState({
+        members: [...this.state.members, newMember],
+        inputText: ''
+      }, ()=>{this.getMember()})
+        //this.getTask()
+      }
 
+    getMember = () =>{
+      // console.log('Task',this.state.task);
+      this.props.getMember(this.state.members)
+    }
 
 
     onInputChange = (e) =>{

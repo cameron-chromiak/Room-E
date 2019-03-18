@@ -10,14 +10,16 @@ class BuildTool extends Component{
 
   state={
     members: [],
-    task: []
+    task: [],
   }
 
   getTask = (newTask) =>{
     this.setState({task: this.state.task, newTask})
     }
-  
 
+  getMember = (newMember) =>{
+    this.setState({members: this.state.members, newMember})
+  }
 
   componentDidMount(){
     // console.log(this.props.match.params.id);
@@ -33,7 +35,7 @@ class BuildTool extends Component{
       <div className='ui two column centered grid'>
         <div className='row'>
           <div className='column'>
-            <MembersCard/>
+            <MembersCard getMember={this.getMember}/>
           </div>
           <div className='column'>
             <TaskCard getTask={this.getTask}/>
@@ -47,7 +49,7 @@ class BuildTool extends Component{
     return(
       <div>
         {this.renderCards()}
-        <ControlMenu/>
+        <ControlMenu buildConfig={this}/>
       </div>
     )
   }
