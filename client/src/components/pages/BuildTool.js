@@ -14,8 +14,10 @@ class BuildTool extends Component{
   }
 
   getTask = (newTask) =>{
-        // console.log('build',newTask);
-  }
+    this.setState({task: this.state.task, newTask})
+    }
+  
+
 
   componentDidMount(){
     // console.log(this.props.match.params.id);

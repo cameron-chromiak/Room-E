@@ -4,23 +4,23 @@ import '../styles/CardsStyle.css'
   class TaskCard extends Component{
 
     state = {
-      task: [], //from db
+      task: [],
       inputText: ''
     }
 
     addSubmit = (e) =>{
       e.preventDefault()
       let newTask = this.state.inputText
-      this.setState(prevState => ({
-        task: [...prevState.task, newTask],
+
+      this.setState({
+        task: [...this.state.task, newTask],
         inputText: ''
-      })
-    )
-    this.getTask()
-  }
+      }, ()=>{this.getTask()})
+        //this.getTask()
+      }
 
     getTask = () =>{
-      console.log('Task',this.state.task);
+      // console.log('Task',this.state.task);
       this.props.getTask(this.state.task)
     }
 
