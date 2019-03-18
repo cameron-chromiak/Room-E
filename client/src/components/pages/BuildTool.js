@@ -4,14 +4,11 @@ import Axios from 'axios'
 import MembersCard from './util/MembersCard'
 import TaskCard from './util/TaskCard'
 import './styles/BuildCss.css'
-
+import ControlMenu from './util/ControlMenu'
 
 class BuildTool extends Component{
 
 
-  state={
-    // location: location
-  }
 
   componentDidMount(){
     // console.log(this.props.match.params.id);
@@ -24,7 +21,7 @@ class BuildTool extends Component{
 
   renderCards = () =>{
     return(
-      <div className='ui four column centered grid'>
+      <div className='ui two column centered grid'>
         <div className='row'>
           <div className='column'>
             <MembersCard/>
@@ -41,6 +38,7 @@ class BuildTool extends Component{
     return(
       <div>
         {this.renderCards()}
+        <ControlMenu/>
       </div>
     )
   }
