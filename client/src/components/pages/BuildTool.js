@@ -14,11 +14,15 @@ class BuildTool extends Component{
   }
 
   getTask = (newTask) =>{
-    this.setState({task: this.state.task, newTask})
+    let task = [...this.state.task]
+    task.push(newTask[0])
+    this.setState({task})
     }
 
   getMember = (newMember) =>{
-    this.setState({members: this.state.members, newMember})
+    let members = [...this.state.members]
+    members.push(newMember[0])
+    this.setState({members})
   }
 
   componentDidMount(){
@@ -29,6 +33,7 @@ class BuildTool extends Component{
       }
     )
   }
+
 
   renderCards = () =>{
     return(
