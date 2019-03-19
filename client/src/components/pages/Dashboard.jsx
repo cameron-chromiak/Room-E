@@ -10,7 +10,6 @@ export default class Dashoard extends Component {
 
   state={
     ExistingHouses: [],
-    fireRedirect: false
   }
 
   componentDidMount(){
@@ -18,7 +17,7 @@ export default class Dashoard extends Component {
     Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
       .then(res=>{
         this.setState({ExistingHouses:res.data.houses})
-          console.log('Dashoard State',this.state.ExistingHouses)
+          // console.log('Dashoard State',this.state.ExistingHouses)
       })
   }
 
@@ -32,10 +31,9 @@ export default class Dashoard extends Component {
       }
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
-          console.log('RES', res)
-          this.props.history.push(`house/details/${res.data.house._id}`)
-          //this.setState({ fireRedirect: true })
-        })
+          // console.log('RES', res)
+          this.props.history.push(`house/build/${res.data.house._id}`)
+      })
     }
   }
 
@@ -70,12 +68,7 @@ export default class Dashoard extends Component {
       )
     }
     else {
-      return (
-        <div>
-        <Redirect to="/"/>
-          {/*{setTimeout(<Redirect to="/"/>, 1000)}*/}
-        </div>
-      )
+      return null
     }
   }
 
@@ -91,14 +84,14 @@ export default class Dashoard extends Component {
       )}
         </div>
         <div className="card-container">
-        {this.state.ExistingHouses.map(house =>{
-          console.log('fdsgavd',house);
+        {this.state.ExistingHouses.map((house, i) =>{
+          // console.log(house);
           return (
             <div className='ui cards'>
               <div className='card'>
                   <div className="content">
                   <div className="header">
-                    <Link to={`/house/build/${house._id}`}>{house.HouseName}</Link>
+                    <Link key={i} to={`/house/build/${house._id}`}>{house.HouseName}</Link>
                   </div>
                   {/*<div class="meta">
                     {if (house.people){

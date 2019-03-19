@@ -22,14 +22,14 @@ import '../styles/CardsStyle.css'
       <div className="ui card center-text">
         <div className="content">
           <div className="header">Members</div>
+          <form className='ui form' onSubmit={this.handleSubmit}>
+            <input className='form-text-input' value={this.state.inputText} onChange={this.onInputChange} type="text"/>
+            <button className='ui button add-btn'>Add</button>
+          </form>
         <div className="description">
           <p>{this.props.members.map((member, i) => <li key={i}>{member}</li>)}</p>
         </div>
         </div>
-        <form className='ui form' onSubmit={this.handleSubmit}>
-          <input className='form-text-input' value={this.state.inputText} onChange={this.onInputChange} type="text"/>
-          <button className='ui button add-btn'>Add</button>
-        </form>
       </div>
     )
   }

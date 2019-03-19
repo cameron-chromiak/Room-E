@@ -11,7 +11,8 @@ class BuildTool extends Component{
   state={
     members: [],
     task: [],
-    id: this.props.match.params.id
+    id: this.props.match.params.id,
+    assign: {}
   }
 
   getTask = (newTask) =>{
@@ -49,9 +50,26 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-    Axios.post('/house/build', {data})
-      .then(res => console.log(res))
-      .catch(err => console.log('ERROR: ',err))
+  //   Axios.post('/house/build', {data})
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log('ERROR: ',err))
+  }
+
+  assignTask = () =>{
+    let members = this.state.members
+    let task = this.state.task
+    let arr = []
+
+    for(let j=0; j<task.length; j++){
+      let ranTask = task[Math.floor(Math.random()*task.length)]
+      console.log('cc',ranTask);
+    }
+
+    for(let i=0; i<members.length; i++){
+      let member = members[i]
+      arr.push({member:null})
+    }
+    console.log(arr);
   }
 
 
@@ -70,6 +88,7 @@ class BuildTool extends Component{
           <form onSubmit={this.onSaveSubmit} className='ui'>
             <button className='ui button green'>Save</button>
           </form>
+          <button onClick={this.assignTask} className='ui button primary'>Shuffle</button>
         </div>
       </div>
     )
