@@ -11,7 +11,7 @@ class BuildTool extends Component{
   state={
     members: [],
     task: [],
-    id:
+    id: null
   }
 
   getTask = (newTask) =>{
