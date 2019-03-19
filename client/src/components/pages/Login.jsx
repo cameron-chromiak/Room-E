@@ -27,7 +27,6 @@ export default class Login extends Component {
     api.login(this.state.username, this.state.password)
       .then(result => {
         console.log('SUCCESS!')
-        console.log('xxx',this.props);
         this.props.stuff.toggleLogIn()
         this.props.history.push("/") // Redirect to the home page
       })

@@ -11,7 +11,7 @@ class BuildTool extends Component{
   state={
     members: [],
     task: [],
-    id: null
+    id: this.props.match.params.id
   }
 
   getTask = (newTask) =>{
@@ -27,12 +27,31 @@ class BuildTool extends Component{
   }
 
 
-  addSubmit = (inputText) =>{    // let newMember = this.state.inputText
-    console.log(inputText)
+  addSubmitMember = (inputText) =>{
+    // console.log(inputText)
     this.setState({
       members: [...this.state.members, inputText],
       inputText: ''
     })
+  }
+  addSubmitTask = (inputText) =>{
+    console.log(inputText)
+    this.setState({
+      task: [...this.state.task, inputText],
+      inputText: ''
+    })
+  }
+
+  onSaveSubmit = (e) =>{
+    e.preventDefault()
+    let data = {
+      members: this.state.members,
+      task: this.state.task,
+      id: this.state.id
+    }
+    Axios.post('/house/build', {data})
+      .then(res => console.log(res))
+      .catch(err => console.log('ERROR: ',err))
   }
 
 
@@ -41,17 +60,23 @@ class BuildTool extends Component{
       <div className='ui two column centered grid'>
         <div className='row'>
           <div className='column'>
-            <MembersCard members={this.state.members} addSubmit={this.addSubmit} getMember={this.getMember}/>
+            <MembersCard members={this.state.members} addSubmitMember={this.addSubmitMember} getMember={this.getMember}/>
           </div>
           <div className='column'>
-            <TaskCard getTask={this.getTask}/>
+            <TaskCard  task={this.state.task} addSubmitTask={this.addSubmitTask} getTask={this.getTask}/>
           </div>
+        </div>
+        <div className="menu-container">
+          <form onSubmit={this.onSaveSubmit} className='ui'>
+            <button className='ui button green'>Save</button>
+          </form>
         </div>
       </div>
     )
   }
 
   render(){
+    console.log('from BuildTool:', this.state)
     return(
       <div>
           {this.renderCards()}

@@ -8,24 +8,10 @@ import '../styles/CardsStyle.css'
       inputText: ''
     }
 
-    // addSubmit = (e) =>{
-    //   e.preventDefault()
-    //   let newMember = this.state.inputText
-    //   this.setState({
-    //     members: [...this.state.members, newMember],
-    //     inputText: ''
-    //   }, ()=>{this.getMember()})
-    //     //this.getTask()
-    //   }
-    //
-    // getMember = () =>{
-    //   // console.log('Task',this.state.task);
-    //   this.props.getMember(this.state.members)
-    // }
 
     handleSubmit = (e) => {
       e.preventDefault();
-      this.props.addSubmit(this.state.inputText)
+      this.props.addSubmitMember(this.state.inputText)
     }
     onInputChange = (e) =>{
       this.setState({inputText: e.target.value})

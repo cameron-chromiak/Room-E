@@ -20,7 +20,7 @@ class Nav extends React.Component{
   }
 
 render(){
-  console.log(this)
+  // console.log(this)
   const props = this.props
   return(
     <div>
