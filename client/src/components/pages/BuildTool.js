@@ -10,7 +10,7 @@ class BuildTool extends Component{
 
   state={
     members: [],
-    task: [],
+    task: ['a', 'b','c','d'],
     id: this.props.match.params.id,
     assign: {}
   }
@@ -55,21 +55,26 @@ class BuildTool extends Component{
   //     .catch(err => console.log('ERROR: ',err))
   }
 
+
+//sorry for this function :(
   assignTask = () =>{
     let members = this.state.members
     let task = this.state.task
+    let tempTask = [...task]
     let arr = []
-
-    for(let j=0; j<task.length; j++){
-      let ranTask = task[Math.floor(Math.random()*task.length)]
-      console.log('cc',ranTask);
-    }
 
     for(let i=0; i<members.length; i++){
       let member = members[i]
       arr.push({member:null})
     }
-    console.log(arr);
+    let j = 0
+    while(j < tempTask.length){
+      let randIndex = Math.floor(Math.random()*task.length)
+      let randTask = tempTask[randIndex]
+      console.log(randTask, tempTask.length);
+      tempTask.splice(randIndex, 1)
+    }
+
   }
 
 
