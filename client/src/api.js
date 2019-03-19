@@ -31,11 +31,10 @@ export default {
     return JSON.parse(localStorage.getItem('user'))
   },
 
-// TODO: Make this go to db
-  // createHouse(houseName){
-  //   return service
-  //   console.log('x');
-  // },
+
+  // .saveHome(data){
+  //   House.findone
+  // }
 
   // This method signs up and logs in the user
   signup(userInfo) {

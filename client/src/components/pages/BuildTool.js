@@ -11,6 +11,7 @@ class BuildTool extends Component{
   state={
     members: [],
     task: [],
+    id:
   }
 
   getTask = (newTask) =>{
@@ -25,13 +26,13 @@ class BuildTool extends Component{
     this.setState({members})
   }
 
-  componentDidMount(){
-    // console.log(this.props.match.params.id);
-    Axios.get(`http//localhost:5000/api/house/details/${this.props.match.params.id}`).then(
-      res =>{
-        console.log(res);
-      }
-    )
+
+  addSubmit = (inputText) =>{    // let newMember = this.state.inputText
+    console.log(inputText)
+    this.setState({
+      members: [...this.state.members, inputText],
+      inputText: ''
+    })
   }
 
 
@@ -40,7 +41,7 @@ class BuildTool extends Component{
       <div className='ui two column centered grid'>
         <div className='row'>
           <div className='column'>
-            <MembersCard getMember={this.getMember}/>
+            <MembersCard members={this.state.members} addSubmit={this.addSubmit} getMember={this.getMember}/>
           </div>
           <div className='column'>
             <TaskCard getTask={this.getTask}/>
@@ -53,8 +54,7 @@ class BuildTool extends Component{
   render(){
     return(
       <div>
-        {this.renderCards()}
-        <ControlMenu buildConfig={this}/>
+          {this.renderCards()}
       </div>
     )
   }

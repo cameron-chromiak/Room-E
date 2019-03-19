@@ -27,18 +27,25 @@ class ControlMenu extends Component{
   }
 
 
-  getDerivedStateFromProps(){
-    console.log('ControlMenu', this.props.buildConfig.state.members[0])
-    console.log('state', this.state)
-    this.setState({
-        id: this.props.buildConfig.props.match.params.id,
-        // members: this.props.buildConfig.state.members,
-        // task: this.props.buildConfig.state.task
-    })
-  }
+    // componentWillReceiveProps(prevProps, nextProps){
+    //   console.log('props', nextProps, prevProps);
+    //    if(nextProps.state!==this.props.state){
+    //      this.setState({
+    //          id: this.props.buildConfig.props.match.params.id,
+    //          members: this.props.buildConfig.state.members,
+    //          task: this.props.buildConfig.state.task
+    //      })
+    //    }else{
+    //      return 0
+    //    }
+    // }
+
+
 
 
   render(){
+    console.log('ControlMenu', this.props.buildConfig.state.members[0])
+    console.log('state', this.props, this.props.members)
     return(
       <div>
         <div className="ui very padded segment menu-container">
