@@ -16,7 +16,6 @@ yarn-error.log*
 /.vscode
 /server/
 
-node_modules/
 
 # Temp
 client-old
