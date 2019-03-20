@@ -8,9 +8,10 @@ import ControlMenu from './util/ControlMenu'
 
 class BuildTool extends Component{
 
+
   state={
-    members: [{name:'cam', tasks:[]}, {name:'jul',tasks:[]}],
-    task: ['a', 'b','c','d'],
+    members: [],
+    task: [],
     id: this.props.match.params.id,
     assign: {}
   }
@@ -30,8 +31,9 @@ class BuildTool extends Component{
 
   addSubmitMember = (inputText) =>{
     // console.log(inputText)
+    let newName = {name: inputText, task: []}
     this.setState({
-      members: [...this.state.members, inputText],
+      members: [...this.state.members, newName],
       inputText: ''
     })
   }
@@ -50,13 +52,12 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-  //   Axios.post('/house/build', {data})
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log('ERROR: ',err))
+    Axios.post(`http://localhost:5000/api/house/build/${this.state.id}`, {data})
+      .then(res => console.log(res))
+      .catch(err => console.log('ERROR: ',err))
   }
 
 
-//sorry for this function :(
   assignTask = () =>{
     let members = [...this.state.members]
     let tasks = [...this.state.task]
@@ -64,7 +65,7 @@ class BuildTool extends Component{
 
     let i = 0;
     while(tasks.length > 0){
-      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length-1), 1)
+      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length), 1)
       if(i >= members.length) { i = 0 }
       console.log(tasks, randomTask, i)
       members[i].tasks.push(randomTask)
