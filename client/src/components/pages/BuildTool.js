@@ -9,7 +9,7 @@ import ControlMenu from './util/ControlMenu'
 class BuildTool extends Component{
 
   state={
-    members: [],
+    members: ['cam', 'jul'],
     task: ['a', 'b','c','d'],
     id: this.props.match.params.id,
     assign: {}
@@ -71,9 +71,17 @@ class BuildTool extends Component{
     while(j < tempTask.length){
       let randIndex = Math.floor(Math.random()*task.length)
       let randTask = tempTask[randIndex]
-      console.log(randTask, tempTask.length);
+      console.log(randTask, tempTask.length)
+      arr[randIndex] = randTask
       tempTask.splice(randIndex, 1)
+      console.log(arr);
     }
+
+    // function joinTaskandMembers(task){
+    //   if(task){
+    //     arr
+    //   }
+    // }
 
   }
 
