@@ -10,10 +10,9 @@ const House = require('../models/House')
 //     res.json({deleted:deletedThing})
 //   })
 // })
-
 router.get('/dashboard', isLoggedIn, (req, res, next) =>{
   console.log('INDEX')
-  let houses = House.find().then(house =>{
+  let houses = House.find({userId:req.user._id}).then(house =>{
     res.json({
       houses:house
     })

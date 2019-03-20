@@ -10,8 +10,8 @@ class BuildTool extends Component{
 
 
   state={
-    members: [{name: 'cam', task: []}, {name: 'jula', task: []}],
-    task: ['a', 'b', 'c'],
+    members: [],
+    task: [],
     id: this.props.match.params.id,
     assign: {}
   }

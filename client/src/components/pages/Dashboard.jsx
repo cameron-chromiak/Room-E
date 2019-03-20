@@ -9,7 +9,7 @@ import './styles/DashboardStyle.css'
 export default class Dashoard extends Component {
 
   state={
-    ExistingHouses: [],
+    ExistingHouses: []
   }
 
   componentDidMount(){
