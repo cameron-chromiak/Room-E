@@ -27,7 +27,7 @@ import '../styles/CardsStyle.css'
             <button className='ui button add-btn'>Add</button>
           </form>
         <div className="description">
-          <p>{this.props.members.map((member, i) => <li key={i}>{member}</li>)}</p>
+          <p>{this.props.members.map((member, i) => <li key={i}>{member.name}</li>)}</p>
         </div>
         </div>
       </div>

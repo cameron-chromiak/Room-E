@@ -9,7 +9,7 @@ import ControlMenu from './util/ControlMenu'
 class BuildTool extends Component{
 
   state={
-    members: ['cam', 'jul'],
+    members: [{name:'cam', tasks:[]}, {name:'jul',tasks:[]}],
     task: ['a', 'b','c','d'],
     id: this.props.match.params.id,
     assign: {}
@@ -58,31 +58,20 @@ class BuildTool extends Component{
 
 //sorry for this function :(
   assignTask = () =>{
-    let members = this.state.members
-    let task = this.state.task
-    let tempTask = [...task]
-    let arr = []
+    let members = [...this.state.members]
+    let tasks = [...this.state.task]
+    let users = []
 
-    for(let i=0; i<members.length; i++){
-      let member = members[i]
-      arr.push({member:null})
+    let i = 0;
+    while(tasks.length > 0){
+      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length-1), 1)
+      if(i >= members.length) { i = 0 }
+      console.log(tasks, randomTask, i)
+      members[i].tasks.push(randomTask)
+      //this.pushTask(randomTask, i)
+      i++;
     }
-    let j = 0
-    while(j < tempTask.length){
-      let randIndex = Math.floor(Math.random()*task.length)
-      let randTask = tempTask[randIndex]
-      console.log(randTask, tempTask.length)
-      arr[randIndex] = randTask
-      tempTask.splice(randIndex, 1)
-      console.log(arr);
-    }
-
-    // function joinTaskandMembers(task){
-    //   if(task){
-    //     arr
-    //   }
-    // }
-
+    console.log(members)
   }
 
 
