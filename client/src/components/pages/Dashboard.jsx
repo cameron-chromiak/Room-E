@@ -4,7 +4,7 @@ import Axios from 'axios'
 import {Redirect } from 'react-router'
 import {Link} from 'react-router-dom';
 import './styles/DashboardStyle.css'
-import {SERVER_URL} from '../config'
+// import {SERVER_URL} from '../config'
 
 export default class Dashoard extends Component {
 
