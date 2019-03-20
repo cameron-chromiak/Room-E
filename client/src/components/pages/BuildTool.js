@@ -13,7 +13,6 @@ class BuildTool extends Component{
     members: [],
     task: [],
     id: this.props.match.params.id,
-    assign: {}
   }
 
   getTask = (newTask) =>{
@@ -87,6 +86,9 @@ class BuildTool extends Component{
           <div className='column'>
             <TaskCard  task={this.state.task} addSubmitTask={this.addSubmitTask} getTask={this.getTask}/>
           </div>
+        </div>
+        <div className='ui'>
+
         </div>
         <div className="menu-container">
           <form onSubmit={this.onSaveSubmit} className='ui'>
