@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Don't forget to set "MONGODB_URI" in ~/server/.env
 const uri = process.env.MONGODB_URI || `mongodb://localhost/rooms`;
-
+console.log('this is uri',uri);
 mongoose
   .connect(uri, { useNewUrlParser: true })
   .then(x => {
