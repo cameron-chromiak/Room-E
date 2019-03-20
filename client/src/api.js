@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true
 
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
+  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://room-e.herokuapp.com/api',
   withCredentials: true
 })
 
