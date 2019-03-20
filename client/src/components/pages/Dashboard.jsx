@@ -14,7 +14,7 @@ export default class Dashoard extends Component {
 
   componentDidMount(){
     // console.log(api.isLoggedIn())
-    Axios.get('http://room-e.herokuapp.com/api/dashboard', {withCredentials: true})
+    Axios.get(`${SERVER_URL}/api/dashboard`, {withCredentials: true})
       .then(res=>{
         this.setState({ExistingHouses:res.data.houses})
           // console.log('Dashoard State',this.state.ExistingHouses)
@@ -29,7 +29,7 @@ export default class Dashoard extends Component {
       let data = {
         HouseName: this.state.HouseName
       }
-      Axios.post('http://localhost:5000/api/house', data)
+      Axios.post(`http://SERVER_URL/api/house`, data)
         .then(res =>{
           // console.log('RES', res)
           this.props.history.push(`house/build/${res.data.house._id}`)
