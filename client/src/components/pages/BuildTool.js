@@ -51,7 +51,7 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-    Axios.post(`http://localhost:5000/api/house/build/${this.state.id}`, {data})
+    Axios.post(`http://room-e.herokuapp.com/api/house/build/${this.state.id}`, {data})
       .then(res => console.log(res))
       .catch(err => console.log('ERROR: ',err))
   }

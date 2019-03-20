@@ -4,7 +4,7 @@ import Axios from 'axios'
 import {Redirect } from 'react-router'
 import {Link} from 'react-router-dom';
 import './styles/DashboardStyle.css'
-
+import {SERVER_URL} from '../config'
 
 export default class Dashoard extends Component {
 
@@ -14,7 +14,7 @@ export default class Dashoard extends Component {
 
   componentDidMount(){
     // console.log(api.isLoggedIn())
-    Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
+    Axios.get('http://room-e.herokuapp.com/api/dashboard', {withCredentials: true})
       .then(res=>{
         this.setState({ExistingHouses:res.data.houses})
           // console.log('Dashoard State',this.state.ExistingHouses)
