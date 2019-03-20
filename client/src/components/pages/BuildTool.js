@@ -10,8 +10,8 @@ class BuildTool extends Component{
 
 
   state={
-    members: [],
-    task: [],
+    members: [{name: 'cam', task: []}, {name: 'jula', task: []}],
+    task: ['a', 'b', 'c'],
     id: this.props.match.params.id,
     assign: {}
   }
@@ -64,10 +64,11 @@ class BuildTool extends Component{
     let users = []
 
     let i = 0;
-    while(tasks.length > 0){
-      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length), 1)
+    while(tasks.length >= 0){
+      console.log(i);
+      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)
       if(i >= members.length) { i = 0 }
-      console.log(tasks, randomTask, i)
+      // console.log(tasks, randomTask, i)
       members[i].tasks.push(randomTask)
       //this.pushTask(randomTask, i)
       i++;
