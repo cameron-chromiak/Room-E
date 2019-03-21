@@ -24,7 +24,7 @@ export default class Dashoard extends Component {
   handleSubmit = (e) =>{
     e.preventDefault()
     if(!this.state.HouseName){
-      console.log('You need a house name');
+      console.log('You need a house name')
     }else{
       let data = {
         HouseName: this.state.HouseName
