@@ -4,7 +4,6 @@ import '../styles/CardsStyle.css'
   class MembersCard extends Component{
 
     state = {
-      members: [],
       inputText: ''
     }
 
@@ -17,6 +16,8 @@ import '../styles/CardsStyle.css'
       this.setState({inputText: e.target.value})
     }
 
+
+
     render(){
       return(
       <div className="ui card center-text">
@@ -27,7 +28,8 @@ import '../styles/CardsStyle.css'
             <button className='ui button add-btn'>Add</button>
           </form>
         <div className="description">
-          <p>{this.props.members.map((member, i) => <li key={i}>{member.name}</li>)}</p>
+          <p>{this.props.members.map((member, i) =>
+            <li onClick={(e)=>{this.removeItem(i)}} key={i}>{member.name}</li>)}</p>
         </div>
         </div>
       </div>

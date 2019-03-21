@@ -31,7 +31,7 @@ export default class Dashoard extends Component {
       }
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
-          // console.log('RES', res)
+          console.log(res);
           this.props.history.push(`house/build/${res.data.house._id}`)
       })
     }
@@ -73,15 +73,11 @@ export default class Dashoard extends Component {
   }
 
   render() {
-    const { fireRedirect } = this.state
 
     return (
       <div>
         <div>
         {this.showDashboard()}
-        {fireRedirect && (
-        <Redirect to={'/house/build'}/>
-      )}
         </div>
         <div className="card-container">
         {this.state.ExistingHouses.map((house, i) =>{

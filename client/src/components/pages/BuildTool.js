@@ -12,15 +12,16 @@ class BuildTool extends Component{
   state={
     members: [],
     task: [],
-    id: this.props.match.params.id,
-
+    id: this.props.match.params.id
   }
   // load member and chore data
   componentDidMount(){
     Axios.get(`${SERVER_URL}/house/build/${this.props.match.params.id}`, {withCredentials: true})
       .then(res=>{
-        console.log(res.data);
-        this.setState({members:res.data.houses})
+        this.setState({
+          members:res.data.house.people,
+          task: res.data.house.task
+        })
       })
   }
 
@@ -43,7 +44,7 @@ class BuildTool extends Component{
     })
   }
   addSubmitTask = (inputText) =>{
-    console.log(inputText)
+    // console.log(inputText)
     this.setState({
       task: [...this.state.task, inputText],
       inputText: ''
@@ -58,32 +59,49 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-    Axios.post(`http://localhost:5000/api/house/build/${this.state.id}`, {data})
+    Axios.get(`http://localhost:5000/api/house/build/${this.state.id}`, {data})
       .then(res => console.log(res))
       .catch(err => console.log('ERROR: ',err))
   }
 
+    onDeleteDoc = (e) =>{
+      console.log('x');
+      e.preventDefault()
+      Axios.delete(`http://localhost:5000/api/house/delete/${this.state.id}`)
+        .then(res => this.props.history.push(`/dashboard`))
+        .catch(err => console.log('ERROR: ',err))
+      }
+
+//handle click removeItem
+  // removeItem = (i) =>{
+  //   let temp = [...this.state.members]
+  //   temp.splice(i, 1)
+  //   this.setState({
+  //     members:temp
+  //   })
+  //   console.log(this.state.members);
+  // }
 
   assignTask = () =>{
     let members = [...this.state.members]
     let tasks = [...this.state.task]
     let users = []
-
     let i = 0;
 
      while(tasks.length > 0){
-        console.log(tasks.length);
+        // console.log(tasks.length);
      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)[0]
       if(i >= members.length) {i = 0 }
-         console.log( members[i])
+         // console.log( members[i])
          members[i].task.push(randomTask)
          i++;
      }
-    console.log(members)
   }
 
 
+
   renderCards = () =>{
+          console.log(this.state.members)
     return(
       <div className='ui two column centered grid'>
         <div className='row'>
@@ -93,16 +111,13 @@ class BuildTool extends Component{
           <div className='column'>
             <TaskCard  task={this.state.task} addSubmitTask={this.addSubmitTask} getTask={this.getTask}/>
           </div>
-          <div className="assign-container">
+          <div className="assign-container ui card center-text">
             <div className="name-container">
             <div>
             {this.state.members.map((member, i) =>
             <li key={i}>{member.name}</li>)}
             </div>
-              <div className="person-task">
-              { this.state.members.length > 0 ?
-                console.log('hey',this.state.members) : console.log('nope') }
-
+              <div className="person-task" ref='task'>
               </div>
             </div>
           </div>
@@ -112,13 +127,15 @@ class BuildTool extends Component{
             <button className='ui button green'>Save</button>
           </form>
           <button onClick={this.assignTask} className='ui button primary'>Shuffle</button>
+          <form onSubmit={this.onDeleteDoc}>
+            <button className='ui button red'>Delete</button>
+          </form>
         </div>
       </div>
     )
   }
 
   render(){
-    console.log('from BuildTool:', this.state)
     return(
       <div>
           {this.renderCards()}
