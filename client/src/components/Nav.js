@@ -1,7 +1,6 @@
 import React from 'react'
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import Secret from './pages/Secret';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
@@ -29,7 +28,6 @@ render(){
       {api.isLoggedIn() &&<NavLink className='item' to="/dashboard">Dashboard</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item' to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item'to="/login">Login</NavLink>}
-      <NavLink className='item' to="/secret">Secret</NavLink>
       <div className='right menu'>
       {api.isLoggedIn() && <Link className='item' to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
       </div>
@@ -45,7 +43,6 @@ render(){
           render={(props) => <Login {...props}  stuff={this.props}/>}
         />
       <Route path="/signup" component={Signup} />
-      <Route path="/secret" component={Secret} />
       <Route path="/house/build/:id" component={BuildTool} />
       <Route render={() => <h2>404</h2>} />
     </Switch>

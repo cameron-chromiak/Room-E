@@ -13,17 +13,16 @@ class BuildTool extends Component{
     members: [],
     task: [],
     id: this.props.match.params.id,
-    assign: {}
+
   }
-  //load member and chore data
-  // componentDidMount(){
-  //   Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
-  //     .then(res=>{
-          // console.log(res.data);
-  //       this.setState({members:res.data.houses})
-  //
-  //     })
-  // }
+  // load member and chore data
+  componentDidMount(){
+    Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
+      .then(res=>{
+        console.log(res.data);
+        this.setState({members:res.data.houses})
+      })
+  }
 
   getTask = (newTask) =>{
     let task = [...this.state.task]
@@ -73,15 +72,15 @@ class BuildTool extends Component{
     let users = []
 
     let i = 0;
-    while(tasks.length >= 0){
-      console.log(i);
-      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)
-      if(i >= members.length) { i = 0 }
-      // console.log(tasks, randomTask, i)
-      members[i].tasks.push(randomTask)
-      //this.pushTask(randomTask, i)
-      i++;
-    }
+
+     while(tasks.length > 0){
+        console.log(tasks.length);
+     let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)[0]
+      if(i >= members.length) {i = 0 }
+         console.log( members[i])
+         members[i].task.push(randomTask)
+         i++;
+     }
     console.log(members)
   }
 
@@ -95,6 +94,12 @@ class BuildTool extends Component{
           </div>
           <div className='column'>
             <TaskCard  task={this.state.task} addSubmitTask={this.addSubmitTask} getTask={this.getTask}/>
+          </div>
+          <div>
+          {this.state.members.map((member, i) => <ul key={i}>
+          <li>{member.name}</li>
+          <li>{member.task}</li>
+          </ul>)}
           </div>
         </div>
         <div className="menu-container">

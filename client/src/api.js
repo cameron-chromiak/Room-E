@@ -72,11 +72,5 @@ export default {
   // api.getCountries().then(countries => { /* ... */ })
 
 
-  getSecret() {
-    return service
-      .get('/secret')
-      .then(res => res.data)
-      .catch(errHandler)
-  },
 
 }
