@@ -15,6 +15,15 @@ class BuildTool extends Component{
     id: this.props.match.params.id,
     assign: {}
   }
+  //load member and chore data
+  // componentDidMount(){
+  //   Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
+  //     .then(res=>{
+          // console.log(res.data);
+  //       this.setState({members:res.data.houses})
+  //
+  //     })
+  // }
 
   getTask = (newTask) =>{
     let task = [...this.state.task]
