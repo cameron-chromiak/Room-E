@@ -32,7 +32,8 @@ export default class Dashoard extends Component {
       Axios.post('http://localhost:5000/api/house', data)
         .then(res =>{
           console.log(res);
-          this.props.history.push(`house/build/${res.data.house._id}`)
+          // this.props.history.push(`house/build/${res.data.house._id}`) broken
+          window.location.reload();
       })
     }
   }
@@ -75,7 +76,7 @@ export default class Dashoard extends Component {
   render() {
 
     return (
-      <div>
+      <div className='dashboard-container'>
         <div>
         {this.showDashboard()}
         </div>

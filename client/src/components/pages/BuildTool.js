@@ -113,11 +113,13 @@ class BuildTool extends Component{
           </div>
           <div className="assign-container ui card center-text">
             <div className="name-container">
-            <div>
-            {this.state.members.map((member, i) =>
-            <li key={i}>{member.name}</li>)}
-            </div>
-              <div className="person-task" ref='task'>
+              <div>
+                {/*{this.state.members.map((member, i) =>
+                <h4 key={i}>{member.name}:</h4>
+                  member.task.map(tas =>{
+                    <li>{tas}</li>
+                  })
+              )}*/}
               </div>
             </div>
           </div>
@@ -126,8 +128,10 @@ class BuildTool extends Component{
           <form onSubmit={this.onSaveSubmit} className='ui'>
             <button className='ui button green'>Save</button>
           </form>
-          <button onClick={this.assignTask} className='ui button primary'>Shuffle</button>
-          <form onSubmit={this.onDeleteDoc}>
+          <div>
+            <button onClick={this.assignTask} className='ui button blue'>Mix</button>
+          </div>
+          <form className='btn-delete' onSubmit={this.onDeleteDoc}>
             <button className='ui button red'>Delete</button>
           </form>
         </div>
