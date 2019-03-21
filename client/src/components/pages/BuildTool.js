@@ -5,7 +5,7 @@ import MembersCard from './util/MembersCard'
 import TaskCard from './util/TaskCard'
 import './styles/BuildCss.css'
 import ControlMenu from './util/ControlMenu'
-
+const SERVER_URL = "http://localhost:5000/api"
 class BuildTool extends Component{
 
 
@@ -17,7 +17,7 @@ class BuildTool extends Component{
   }
   // load member and chore data
   componentDidMount(){
-    Axios.get('http://localhost:5000/api/dashboard', {withCredentials: true})
+    Axios.get(`${SERVER_URL}/house/build/${this.props.match.params.id}`, {withCredentials: true})
       .then(res=>{
         console.log(res.data);
         this.setState({members:res.data.houses})
@@ -29,14 +29,11 @@ class BuildTool extends Component{
     task.push(newTask[0])
     this.setState({task})
     }
-
   getMember = (newMember) =>{
     let members = [...this.state.members]
     members.push(newMember[0])
     this.setState({members})
   }
-
-
   addSubmitMember = (inputText) =>{
     // console.log(inputText)
     let newName = {name: inputText, task: []}
@@ -52,6 +49,7 @@ class BuildTool extends Component{
       inputText: ''
     })
   }
+
 
   onSaveSubmit = (e) =>{
     e.preventDefault()
@@ -95,11 +93,18 @@ class BuildTool extends Component{
           <div className='column'>
             <TaskCard  task={this.state.task} addSubmitTask={this.addSubmitTask} getTask={this.getTask}/>
           </div>
-          <div>
-          {this.state.members.map((member, i) => <ul key={i}>
-          <li>{member.name}</li>
-          <li>{member.task}</li>
-          </ul>)}
+          <div className="assign-container">
+            <div className="name-container">
+            <div>
+            {this.state.members.map((member, i) =>
+            <li key={i}>{member.name}</li>)}
+            </div>
+              <div className="person-task">
+              { this.state.members.length > 0 ?
+                console.log('hey',this.state.members) : console.log('nope') }
+
+              </div>
+            </div>
           </div>
         </div>
         <div className="menu-container">
