@@ -11,6 +11,7 @@ import '../styles/CardsStyle.css'
     handleSubmit = (e) => {
       e.preventDefault();
       this.props.addSubmitMember(this.state.inputText)
+      this.setState({inputText: ''})
     }
     onInputChange = (e) =>{
       this.setState({inputText: e.target.value})
