@@ -40,6 +40,7 @@ router.post('/house/build/:id', (req, res) =>{
     .catch(err => console.log('Err from house.js: ', err))
   })
 
+//open house send data
 router.get('/house/build/:id', (req, res) =>{
   console.log('get house data',req.params.id);
   House.findOne({_id:req.params.id})
