@@ -92,12 +92,43 @@ class BuildTool extends Component{
         // console.log(tasks.length);
      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)[0]
       if(i >= members.length) {i = 0 }
-         // console.log( members[i])
+          console.log( members[i])
          members[i].task.push(randomTask)
          i++;
      }
+     this.setState({members})//////
   }
 
+
+  // renderEachTask = (tasks) => {
+  //     console.log(tasks,'234567')
+  //     return tasks.map(task=>{ console.log('ahhh',task) })
+  // }
+
+  renderTask = () =>{
+    return(
+      this.state.members.map(member =>{
+        console.log(member)
+       return (
+         <span>
+         <li>{member.name}</li>
+         <ol>{member.task.join(',')}</ol>
+         <hr />
+         </span>
+        )
+      })
+    )
+  }
+//  renderTask = () =>{
+  //   return(
+  //     this.state.members.map(member =>{
+  //      return <li>{member.name}</li>
+  //       member.map(task =>{
+  //         return <p>{task.task}</p>
+  //       })
+  //     })
+  //   )
+  // }
 
 
   renderCards = () =>{
@@ -114,12 +145,7 @@ class BuildTool extends Component{
           <div className="assign-container ui card center-text">
             <div className="name-container">
               <div>
-                {/*{this.state.members.map((member, i) =>
-                <h4 key={i}>{member.name}:</h4>
-                  member.task.map(tas =>{
-                    <li>{tas}</li>
-                  })
-              )}*/}
+                {this.renderTask()}
               </div>
             </div>
           </div>
