@@ -60,7 +60,7 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-    Axios.post(`http://room-e.herokuapp/api/house/build/${this.state.id}`, {data})
+    Axios.post(`https://room-e.herokuapp/api/house/build/${this.state.id}`, {data})
       .then(res => console.log(res))
       .catch(err => console.log('ERROR: ',err))
   }
@@ -68,7 +68,7 @@ class BuildTool extends Component{
     onDeleteDoc = (e) =>{
       console.log('x');
       e.preventDefault()
-      Axios.delete(`http://room-e.herokuapp/api/house/delete/${this.state.id}`)
+      Axios.delete(`https://room-e.herokuapp/api/house/delete/${this.state.id}`)
         .then(res => this.props.history.push(`/dashboard`))
         .catch(err => console.log('ERROR: ',err))
       }
