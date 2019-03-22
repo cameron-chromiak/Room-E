@@ -5,7 +5,7 @@ import MembersCard from './util/MembersCard'
 import TaskCard from './util/TaskCard'
 import './styles/BuildCss.css'
 import ControlMenu from './util/ControlMenu'
-const SERVER_URL = "https://room-e.herokuapp.com"
+const SERVER_URL = "https://room-e.herokuapp.com/api"
 class BuildTool extends Component{
 
 
