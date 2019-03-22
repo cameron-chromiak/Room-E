@@ -14,7 +14,7 @@ export default class Dashoard extends Component {
 
   componentDidMount(){
     // console.log(api.isLoggedIn())
-    Axios.get('https://room-e.herokuapp/api/dashboard', {withCredentials: true})
+    Axios.get('https://room-e.herokuapp/api/dashboard')
       .then(res=>{
         this.setState({ExistingHouses:res.data.houses})
           // console.log('Dashoard State',this.state.ExistingHouses)
