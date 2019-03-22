@@ -16,6 +16,7 @@ class BuildTool extends Component{
   }
   // load member and chore data
   componentDidMount(){
+    
     Axios.get(`${SERVER_URL}/house/build/${this.props.match.params.id}`, {withCredentials: true})
       .then(res=>{
         this.setState({
