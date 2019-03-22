@@ -5,7 +5,7 @@ import MembersCard from './util/MembersCard'
 import TaskCard from './util/TaskCard'
 import './styles/BuildCss.css'
 import ControlMenu from './util/ControlMenu'
-const SERVER_URL = "https://room-e.herokuapp"
+const SERVER_URL = "https://room-e.herokuapp.com"
 class BuildTool extends Component{
 
 
@@ -60,7 +60,7 @@ class BuildTool extends Component{
       task: this.state.task,
       id: this.state.id
     }
-    Axios.post(`https://room-e.herokuapp/api/house/build/${this.state.id}`, {data})
+    Axios.post(`https://room-e.herokuapp.com/api/house/build/${this.state.id}`, {data})
       .then(res => console.log(res))
       .catch(err => console.log('ERROR: ',err))
   }
@@ -68,7 +68,7 @@ class BuildTool extends Component{
     onDeleteDoc = (e) =>{
       console.log('x');
       e.preventDefault()
-      Axios.delete(`https://room-e.herokuapp/api/house/delete/${this.state.id}`)
+      Axios.delete(`https://room-e.herokuapp.com/api/house/delete/${this.state.id}`)
         .then(res => this.props.history.push(`/dashboard`))
         .catch(err => console.log('ERROR: ',err))
       }
