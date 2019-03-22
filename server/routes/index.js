@@ -12,11 +12,11 @@ const House = require('../models/House')
 // })
 router.get('/dashboard', isLoggedIn, (req, res, next) =>{
   console.log('INDEX')
-  let houses = House.find({userId:req.user._id}).then(house =>{
+  House.find({userId:req.user._id}).then(house =>{
     res.json({
       houses:house
     })
-  })
+  }).catch(err=>console.log(err))
 })
 
 

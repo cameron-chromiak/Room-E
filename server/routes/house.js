@@ -14,7 +14,7 @@ router.post('/house', isLoggedIn, (req, res)=>{
     userId: req.user._id
   })
   home.save((err,i)=>{
-    // console.log('from house',err, i)
+     console.log('from house',err, i)
     if(!err){
       res.json({house:true})
     }
