@@ -93,7 +93,7 @@ class BuildTool extends Component{
         // console.log(tasks.length);
      let randomTask = tasks.splice(Math.floor(Math.random()*tasks.length)-1, 1)[0]
       if(i >= members.length) {i = 0 }
-          console.log( members[i])
+          // console.log( members[i])
          members[i].task.push(randomTask)
          i++;
      }
@@ -109,7 +109,7 @@ class BuildTool extends Component{
   renderTask = () =>{
     return(
       this.state.members.map(member =>{
-        console.log(member)
+        // console.log(member)
        return (
          <span>
          <li>{member.name}</li>
