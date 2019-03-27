@@ -98,7 +98,8 @@ class BuildTool extends Component{
          members[i].task.push(randomTask)
          i++;
      }
-     this.setState({members})//////
+     this.state.members.map(member =>{return null})
+     this.setState({members})
   }
 
 

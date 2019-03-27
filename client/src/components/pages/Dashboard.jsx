@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../api';
 import Axios from 'axios'
-import {Redirect } from 'react-router'
+// import {Redirect } from 'react-router'
 import {Link} from 'react-router-dom';
 import './styles/DashboardStyle.css'
 
