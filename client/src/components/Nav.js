@@ -24,7 +24,7 @@ render(){
   return(
     <div>
     <div className='ui secondary menu'>
-      <NavLink to="/" className='item' exact>Home</NavLink>
+      <NavLink to="/" className='item' exact>Home ALPHA</NavLink>
       {api.isLoggedIn() &&<NavLink className='item' to="/dashboard">Dashboard</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item' to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink className='item'to="/login">Login</NavLink>}
