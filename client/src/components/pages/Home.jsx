@@ -12,7 +12,7 @@ export default class Home extends Component {
         <div className="landing-container">
           <div className="landing-text">
             <h1 className="ui header-lg">Welcome</h1>
-            <p className="ui header-md">This is RoomE. A way to simplify life with your roomates</p>
+            <p className="ui header-md">This is RoomE. As way to simplify life with your roomates</p>
           </div>
         </div>
 

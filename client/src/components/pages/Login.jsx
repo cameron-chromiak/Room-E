@@ -45,6 +45,7 @@ export default class Login extends Component {
     <div className="content">
       <div className="Login">
         <h2>Login</h2>
+        <h6>Here, just use mine</h6>
         <form>
           Username: <input className='field' type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
           Password: <input className='field' type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />

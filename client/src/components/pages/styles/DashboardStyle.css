@@ -1,27 +1,4 @@
 
-
-.dashboard-container{
-  text-align: center;
-
-}
-
-.card-container{
-  margin-top: 5rem;
-  float: left;
-  margin-left: 40vw;
-}
-
-/* landing page */
-.footer{
-  background: #2c3e50;
-  min-height: 10vh;
-}
-.section{
-  padding: 1rem;
-  display: flex;
-  line-height: 1.2;
-  min-height: 40vh;
-}
 .about-text{
   padding-top: 1.5rem;
   width: 40vw;
@@ -39,8 +16,44 @@
 }
 .landing-text{
   padding-top: 20vw;
-  margin-left: 20vw;
+  margin-left: 15vw;
   color: #2c3e50;
+}
+
+@media only screen and (max-width: 768px) {
+
+
+
+
+  /* landing page */
+  .footer{
+    background: #2c3e50;
+    min-height: 10vh;
+  }
+  .section{
+    padding: 1rem;
+    display: flex;
+    line-height: 1.2;
+    min-height: 40vh;
+  }
+  .about-text{
+    padding-top: 1.5rem;
+    width: 40vw;
+    font-size: 1.3rem;
+  }
+  .header-lg{
+    font-size: 3rem;
+  }
+  .header-md{
+    font-size: 1em;
+  }
+  .landing-container{
+    height: 100vh;
+    background: #27ae60;
+  }
+  .landing-text{
+    margin: 0 1rem;
+  }
 }
 *{
   color: #2c3e50;
